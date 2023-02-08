@@ -15,6 +15,14 @@ class TacheController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    public function __construct()
+    {
+        // Ce controlleur n'est accessible qu'avec un JWT valide
+        $this->middleware('auth');
+    }
+
+
     public function showAllTasks()
     {
         return Tache::orderBy('date_fin', 'ASC')->get();

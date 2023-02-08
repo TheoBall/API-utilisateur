@@ -19,6 +19,19 @@ $router->get('/', function () use ($router) {
 // Création du groupr api : http://localhost:8000/api/
 $router->group(['prefix' => 'api'], function () use ($router) {
 
+//authentification ajouter les lignes ci-dessous
+    
+    //inscription
+    // api/register
+    $router->post('register', 'AuthController@register');
+    // api/login
+    $router->post('login', 'AuthController@login');
+    // api/logout
+    $router->post('logout', 'AuthController@logout');
+    // api/refresh
+    $router->post('refresh', 'AuthController@refresh');
+    // api/me
+    $router->post('me', 'AuthController@me');
     // Toutes les tâches
     $router->get('taches',  ['uses' => 'TacheController@showAllTasks']);
 
